@@ -1,0 +1,24 @@
+<div class="view-container team-view-container">
+	<div class="team-details-container">
+		<div class="column column--left">
+			<img class="team-image" ng-src="{{teamImage}}">
+		</div>
+		<div class="column column--right">
+			<h2 class="team-name">{{teamName}}</h2>
+			<ul class="team-members-list">
+				<li class="team-members-list-item" ng-repeat="member in teamMembers">{{member}}</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main-media-container">
+		<div class="instagram-media-object-container" ng-repeat="mediaVO in mediaDataArray" ng-switch="mediaVO.media.type">
+
+			<img class="instagram-media-object" ng-switch-when="image" ng-src="{{mediaVO.media.url}}"></img>
+			<video class="instagram-media-object" ng-switch-when="video" ng-src="{{mediaVO.media.url}}" controls></video>
+
+			<span class="instagram-media-date" am-time-ago="{{mediaVO.media.timestamp}}" am-preprocess="unix"></span>
+			<p class="media-caption">{{mediaVO.media.caption}}</p>
+		</div>
+	</div>
+</div>

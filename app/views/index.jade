@@ -1,0 +1,14 @@
+doctype html
+html
+	include includes/head
+
+	body
+		div(class="container" ng-app="TMWHuntApp")
+			//- include includes/header
+			div(ng-controller="NavigationController" ng-include src="'/partials/navigation.html'")
+
+			div(ng-view)
+
+			//- include includes/footer
+
+	include includes/foot

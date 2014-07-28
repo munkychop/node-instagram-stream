@@ -1,0 +1,36 @@
+<nav class="main-nav">
+
+	<div class="logo"></div>
+	
+	<ul class="main-nav-item-list">
+		<li class="main-nav-item" ng-class="getNavigationItemState('home')">
+			<a href="/">
+				<div class="nav-icon-wrapper">
+					<span class="nav-icon nav-icon--home"></span>
+				</div>
+
+				<span class="nav-item-label">Home</span>
+			</a>
+		</li>
+
+		<li class="main-nav-item" ng-class="getNavigationItemState('/teams')">
+			<a href="/teams">
+				<div class="nav-icon-wrapper">
+					<span class="nav-icon nav-icon--teams"></span>
+				</div>
+
+				<span class="nav-item-label">Teams</span>
+			</a>
+		</li>
+
+		<li class="main-nav-item" ng-class="getNavigationItemState('/slideshow')">
+			<a href="/slideshow">
+				<div class="nav-icon-wrapper">
+					<span class="nav-icon nav-icon--slideshow"></span>
+				</div>
+
+				<span class="nav-item-label">Slideshow</span>
+			</a>
+		</li>
+	</ul>
+</nav>

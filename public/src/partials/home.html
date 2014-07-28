@@ -1,0 +1,24 @@
+<div class="view-container home-view-container">
+	<div class="main-media-container">
+		
+		<div class="instagram-media-object-container" ng-repeat="mediaVO in mediaDataArray" ng-switch="mediaVO.media.type">
+
+			<div class="instagram-media-object-header">
+
+				<div class="column column--left">
+					<img class="instagram-profile-picture" ng-src="{{mediaVO.user.teamThumb}}">
+				</div>
+
+				<div class="column column--right">
+
+					<a class="instagram-media-object-username" href="/teams/{{mediaVO.user.teamName}}">{{mediaVO.user.teamName}}</a>
+
+					<span class="instagram-media-object-date" am-time-ago="{{mediaVO.media.timestamp}}" am-preprocess="unix"></span>
+				</div>
+			</div>
+
+			<img class="instagram-media-object" ng-switch-when="image" ng-src="{{mediaVO.media.url}}"></img>
+			<video class="instagram-media-object" ng-switch-when="video" ng-src="{{mediaVO.media.url}}" controls></video>
+		</div>
+	</div>
+</div>

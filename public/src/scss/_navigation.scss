@@ -1,0 +1,172 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('#{$font-path}/icons.eot?-jnuwyi');
+	src:url('#{$font-path}/icons.eot?#iefix-jnuwyi') format('embedded-opentype'),
+		url('#{$font-path}/icons.woff?-jnuwyi') format('woff'),
+		url('#{$font-path}/icons.ttf?-jnuwyi') format('truetype'),
+		url('#{$font-path}/icons.svg?-jnuwyi#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.main-nav {
+
+	width: 100%;
+	height: 44px;
+	position: fixed;
+	background-color: #9b3;
+	z-index: 100;
+
+	background: $green url('#{$img-path}/navigation-bg-mobile.png') no-repeat;
+	background-size: 768px 100%;
+
+	@include hidpi {
+		background-image: url('#{$img-path}/navigation-bg-mobile_2x.png') no-repeat;
+	}
+
+	@include respond-min($breakpoint-mid) {
+		width: 200px;
+		height: 100%;
+
+		background-image: url('#{$img-path}/navigation-bg-narrow.png');
+		background-size: 100% 560px;
+
+		@include hidpi {
+			background-image: url('#{$img-path}/navigation-bg-narrow_2x.png') no-repeat;
+		}
+	}
+
+	@include respond-min($breakpoint-wide) {
+		width: 300px;
+
+		background-image: url('#{$img-path}/navigation-bg-wide.png');
+		background-size: 100% 670px;
+
+		@include hidpi {
+			background-image: url('#{$img-path}/navigation-bg-wide_2x.png') no-repeat;
+		}
+	}
+}
+	.logo {
+
+		width: 86px;
+		height: 49px;
+		float: left;
+		margin-left: 14px;
+		background: url('#{$img-path}/logo-mobile.png') no-repeat;
+		background-size: 100%;
+
+		@include hidpi {
+			background-image: url('#{$img-path}/logo-mobile_2x.png');
+		}
+
+		@include respond-min($breakpoint-mid) {
+			width: 180px;
+			height: 103px;
+			float: none;
+			margin: 20px auto 0 auto;
+			background-image: url('#{$img-path}/logo.png');
+
+			@include hidpi {
+			
+				background-image: url('#{$img-path}/logo_2x.png');
+			}
+		}
+
+		@include respond-min($breakpoint-wide) {
+			width: 214px;
+			height: 122px;
+			margin-top: 40px;
+		}
+	}
+
+	.main-nav-item-list {
+
+		padding-top: 4px;
+		font-size: 20px;
+		float: right;
+		margin-right: 10px;
+
+		@include respond-min($breakpoint-mid) {
+
+			margin: 46px 0 0 0;
+			font-size: 24px;
+			float: none;
+		}
+	}
+		.main-nav-item {
+
+			float: left;
+			margin-left: 10px;
+
+			& a {
+				color: $brown;
+				display: block;
+				@include clearfix;
+			}
+
+			@include respond-min($breakpoint-mid) {
+				float: none;
+				margin-left: 0;
+				padding: 5px 5px 5px 24px;
+				background-color: transparent;
+				transition: 0.2s background-color ease-in-out;
+
+				&:hover {
+
+					background-color: rgba(#fac32e, 0.4);
+				}
+			}
+
+			@include respond-min($breakpoint-wide) {
+				padding-left: 70px;
+			}
+		}
+
+			.nav-icon-wrapper {
+
+				display: block;
+				float: left;
+			}
+
+				.nav-icon {
+					font-family: 'icomoon';
+					speak: none;
+					font-style: normal;
+					font-weight: normal;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+
+					/* Better Font Rendering =========== */
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+
+					font-size: 30px;
+
+					&.nav-icon--home:before {
+						content: "\e604";
+					}
+
+					&.nav-icon--teams:before {
+						
+						content: "\e605";
+					}
+
+					&.nav-icon--slideshow:before {
+
+						content: "\e601";
+					}
+				}
+
+			.nav-item-label {
+
+				display: none;
+
+				@include respond-min($breakpoint-mid) {
+					display: block;
+					float: left;
+					clear: right;
+					margin-left: 6px;
+				}
+			}

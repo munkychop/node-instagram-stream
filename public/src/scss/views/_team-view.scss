@@ -1,0 +1,129 @@
+.team-view-container {
+
+	& .team-details-container {
+
+		@include clearfix;
+		margin-bottom: 20px;
+
+		& .column {
+
+			@include respond-min($breakpoint-mid) {
+				float: left;
+			}
+		}
+
+		& .column--left {
+
+			width: 26%;
+			margin: 0 auto;
+
+			@include respond-min($breakpoint-mid) {
+				width: 36%;
+				max-width: 240px;
+				margin: 0;
+			}
+
+			@include respond-min($breakpoint-wide) {
+				width: 26%;
+				min-width: 240px;
+				max-width: 280px;
+			}
+		}
+
+			& .team-image {
+
+				width: 100%;
+			}
+
+			& .team-name {
+
+				margin-bottom: 6px;
+				color: $brown;
+
+				@include respond-min($breakpoint-mid) {
+					
+					@include font-size(34);
+					margin-left: 16px;
+				}
+
+				@include respond-min($breakpoint-wide) {
+					
+					@include font-size(38);
+				}
+
+				@include respond-min($breakpoint-huge) {
+					
+					@include font-size(44);
+					margin-left: 20px;
+				}
+			}
+
+		& .column--right {
+
+			text-align: center;
+
+			@include respond-min($breakpoint-mid) {
+
+				text-align: left;
+				width: 60%;
+			}
+		}
+
+			& .team-members-list {
+
+				list-style-type: none;
+				margin: 0 auto;
+				@include clearfix;
+
+				@include respond-min($breakpoint-mid) {
+					
+					margin-left: 20px;
+				}
+
+				@include respond-min($breakpoint-huge) {
+					
+					margin-left: 24px;
+				}
+			}
+				& .team-members-list-item {
+					
+					//background-color: green;
+
+					@include respond-min($breakpoint-mid) {
+						
+						width: 120px;
+						float: left;
+						@include font-size(14);
+
+						&:nth-child(odd) {
+
+							clear: left;
+						}
+					}
+
+					@include respond-min($breakpoint-wide) {
+						
+						width: 128px;
+						@include font-size(16);
+					}
+
+					@include respond-min(1024) {
+
+						&:nth-child(odd) {
+
+							clear: none;
+						}
+
+						&:nth-child(3n+4) {
+
+							clear: left;
+						}
+					}
+				}
+	}
+
+	& .main-media-container {
+
+		clear: both;
+	}
+}

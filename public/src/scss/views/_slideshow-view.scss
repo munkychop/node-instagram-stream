@@ -1,0 +1,23 @@
+.slideshow-view-container {
+
+	width: 100%;
+	max-width: 640px;
+
+	@include respond-min($breakpoint-mid) {
+		width: auto;
+		max-width: 640px;
+	}
+}
+
+	.slideshow-container {
+
+		position: relative;
+
+		.instagram-media-object-container {
+
+			width: 100%;
+			margin: 0;
+			float: none;
+			border: none;
+		}
+	}
