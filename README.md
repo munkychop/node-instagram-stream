@@ -10,6 +10,7 @@ Node Instagram Stream
 - AngularJS
 - Grunt
 - Browserify
+- SASS
 
 ---------------------
 > **NOTE:** Full documentation and accompanying tutorial to follow shortly.
