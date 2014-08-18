@@ -1,10 +1,10 @@
 {
-  "name": "tmw-scavenger-hunt",
-  "title": "TMW Scavenger Hunt",
+  "name": "node-instagram-stream",
+  "title": "Node Instagram Stream",
   "description": "Live Instagram stream example",
-  "url": "https://tmw-scavenger-hunt.ngrok.com/",
+  "url": "https://node-instagram-stream.ngrok.com/",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node index.js",
     "install": "napa"
@@ -44,7 +44,7 @@
     "shuffle-array": "0.0.0",
     "uglifyify": "~2.1.1"
   },
-  "subdomain": "instastream",
+  "subdomain": "node-instagram-stream",
   "engines": {
     "node": "0.8.x"
   }

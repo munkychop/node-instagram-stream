@@ -1,70 +1,49 @@
 /**
  * Module dependencies.
  */
-var express = require('express')	//express - application framework for node
- 	, fs = require('fs')			//fs - filesystem libraru
-	, http = require('http');		//http - give me server
-	//, https = require('https')		//https - give me a secure server
+var _express = require("express"),
+	_http = require("http"),
+	_app,
+	_server,
+	_env = process.env.NODE_ENV || "local",		// get the environemnt var or set as development
+	_config = require("./config/config")[_env],	// get config based on the specifed environment
+	_instagram;
 
 
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
-
-var env = process.env.NODE_ENV || 'local'		//get the environemnt var or set as development
-	, config = require('./config/config')[env];	//get config based on the specifed environment
-	
-	/*, sslKeyOptions = {
-		key: fs.readFileSync(config.global.ssl.key),
-		cert: fs.readFileSync(config.global.ssl.cert)
-	};
-	*/
-
-
-console.log('ENVIRONMENT = ' + env);
+console.log("ENVIRONMENT = " + _env);
 
 
 //  ================================
 //  === EXPRESS SETUP AND CONFIG ===
 //  ================================
 
-//Create an express app
-var app = express();
+// create an express app.
+_app = _express();
 
-// express settings
-require('./core/express')(app, config);
-
-
-//Create the HTTP server with the express app as an argument
-var server = http.createServer(app);
-
-// Create an HTTPS service
-//var server = https.createServer(sslKeyOptions, app);
+// express settings.
+require("./core/express")(_app, _config);
 
 
+// create the HTTP server with the express app as an argument.
+_server = _http.createServer(_app);
 
-//Create the server
-server.listen(app.get('port'), function(){
-	console.log('app.js: Express server listening on port ' + app.get('port'));
-});
-
-server.on('close', function(socket) {
-	console.log('app.js: Server has closed');
+// create the server.
+_server.listen(_app.get("port"), function(){
+	console.log("index.js: Express server listening on port " + _app.get("port"));
 });
 
 
-// import instagram module
-var instagram = require('./core/instagram')(app, server, config);
-//instagram.init();
+// import instagram module.
+_instagram = require("./core/instagram")(_app, _server, _config);
 
-// Bootstrap routes
-require('./core/routes')(app, instagram);
+// bootstrap routes.
+require("./core/routes")(_app, _instagram);
 
-instagram.init();
+// only initialise instagram after the routes have been defined.
+_instagram.init();
 
 
-// expose app as the scope
-exports = module.exports = app;
+// expose app as the scope.
+exports = module.exports = _app;
 
 

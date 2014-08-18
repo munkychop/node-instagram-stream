@@ -1,20 +1,20 @@
 module.exports = function (grunt) {
 
-	'use strict';
+	"use strict";
 
 	var util = require("util"),
-		jsSrcFile = 'public/src/js/app/app.js',
-		jsFile = 'app.min.js',
-		jsDistDir = 'public/dist/js/',
-		libsDir = 'public/src/js/libs/',
+		jsSrcFile = "public/src/js/app/app.js",
+		jsFile = "app.min.js",
+		jsDistDir = "public/dist/js/",
+		libsDir = "public/src/js/libs/",
 
 		// a variable to alias all js files in the app directory, allowing them to be
 		// require'd without any complicated relative filepaths.
 		browserifyAliasAppFilesArray = aliasMappingsToAliasArray({
 			
-			cwd: 'public/src/js/app',
-			src: ['**/*.js'],
-			dest: ''
+			cwd: "public/src/js/app",
+			src: ["**/*.js"],
+			dest: ""
 		});
 
 
@@ -29,8 +29,8 @@ module.exports = function (grunt) {
 
 			grunt.file.expandMapping(alias.src, alias.dest, {cwd: alias.cwd}).forEach(function(file) {
 				
-				var expose = file.dest.substr(0, file.dest.lastIndexOf('.'));
-				aliasArray.push('./' + file.src[0] + ':' + expose);
+				var expose = file.dest.substr(0, file.dest.lastIndexOf("."));
+				aliasArray.push("./" + file.src[0] + ":" + expose);
 			});
 		});
 
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 	// Project configuration.
 	grunt.initConfig({
 
-		pkg: require('./package'),
+		pkg: require("./package"),
 
 		browserify: {
 
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
 				options : {
 					debug: true,
 					alias: browserifyAliasAppFilesArray,
-					transform: ['uglifyify']
+					transform: ["uglifyify"]
 				},
 
 				src: jsSrcFile,
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
 				options : {
 					debug: false,
 					alias: browserifyAliasAppFilesArray,
-					transform: ['uglifyify']
+					transform: ["uglifyify"]
 				},
 
 				src: jsSrcFile,
@@ -85,24 +85,24 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					unixNewlines: true,
-					style: 'expanded',
+					style: "expanded",
 					lineNumbers: false,
 					debugInfo : false,
 					precision : 8,
 					sourcemap : true
 				},
 				files: {
-					'public/dist/css/kickoff.css': 'public/src/scss/kickoff.scss'
+					"public/dist/css/kickoff.css": "public/src/scss/kickoff.scss"
 				}
 			},
 
 			deploy: {
 				options: {
-					style: 'compressed',
+					style: "compressed",
 					precision : 8
 				},
 				files: {
-					'public/dist/css/kickoff.css': 'public/src/scss/kickoff.scss'
+					"public/dist/css/kickoff.css": "public/src/scss/kickoff.scss"
 				}
 
 			}
@@ -119,11 +119,11 @@ module.exports = function (grunt) {
 				options: {
 					// support the last 2 browsers, any browsers with >5% market share,
 					// and ensuring we support IE9 and Anroid 4 stock browsers with prefixes
-					browsers: ['> 5%', 'last 2 versions', 'ie >= 9', 'Android 4'],
+					browsers: ["> 5%", "last 2 versions", "ie >= 9", "Android 4"],
 					map: true
 				},
 				files: {
-					'public/dist/css/kickoff.css': 'public/dist/css/kickoff.css'
+					"public/dist/css/kickoff.css": "public/dist/css/kickoff.css"
 				}
 			}
 		},
@@ -142,7 +142,7 @@ module.exports = function (grunt) {
 				},
 
 				files: {
-					'public/dist/css/kickoff.css' : 'public/dist/css/kickoff.css'
+					"public/dist/css/kickoff.css" : "public/dist/css/kickoff.css"
 				},
 			}
 		},
@@ -151,19 +151,19 @@ module.exports = function (grunt) {
 			
 			img: {
 				files: [
-					{ expand: true, cwd: 'public/src/img', src: ['./**/*.*'], dest: 'public/dist/img' }
+					{ expand: true, cwd: "public/src/img", src: ["./**/*.*"], dest: "public/dist/img" }
 				]
 			},
 
 			partials: {
 				files: [
-					{ expand: true, cwd: 'public/src/partials', src: ['./**/*.*'], dest: 'public/dist/partials' }
+					{ expand: true, cwd: "public/src/partials", src: ["./**/*.*"], dest: "public/dist/partials" }
 				]	
 			},
 
 			fonts: {
 				files: [
-					{ expand: true, cwd: 'public/src/fonts', src: ['./**/*.*'], dest: 'public/dist/fonts' }
+					{ expand: true, cwd: "public/src/fonts", src: ["./**/*.*"], dest: "public/dist/fonts" }
 				]
 			}
 		},
@@ -176,42 +176,42 @@ module.exports = function (grunt) {
 		 */
 		watch: {
 			scss: {
-				files: ['public/src/scss/**/*.scss'],
-				tasks: ['sass:dev', 'autoprefixer:dist']
+				files: ["public/src/scss/**/*.scss"],
+				tasks: ["sass:dev", "autoprefixer:dist"]
 			},
 
 			js: {
 				files: [
-					'Gruntfile.js',
-					'public/src/js/app/**/*.js',
-					'public/src/js/libs/**/*.js'
+					"Gruntfile.js",
+					"public/src/js/app/**/*.js",
+					"public/src/js/libs/**/*.js"
 				],
 
-				tasks: ['browserify:dev']
+				tasks: ["browserify:dev"]
 			},
 
 			html: {
-				files: ['public/src/partials/*.html'],
+				files: ["public/src/partials/*.html"],
 
-				tasks: ['copy:partials']
+				tasks: ["copy:partials"]
 			},
 
 			img: {
-				files: ['public/src/img/**/*.*'],
+				files: ["public/src/img/**/*.*"],
 
-				tasks: ['copy:img']
+				tasks: ["copy:img"]
 			},
 
 			fonts: {
-				files: ['public/src/fonts/**/*.*'],
+				files: ["public/src/fonts/**/*.*"],
 
-				tasks: ['copy:fonts']
+				tasks: ["copy:fonts"]
 			},
 			
 			livereload: {
 				options: { livereload: true },
 				files: [
-					'public/dist/css/*.css'
+					"public/dist/css/*.css"
 				]
 			}
 		}
@@ -219,15 +219,15 @@ module.exports = function (grunt) {
 
 
 	// Load all the grunt task modules.
-	require('load-grunt-tasks')(grunt, {pattern: ['grunt-*']});
+	require("load-grunt-tasks")(grunt, {pattern: ["grunt-*"]});
 
 	// =============
 	// === Tasks ===
 	// =============
 
 	// A task for creating a development build.
-	grunt.registerTask('dev', ['browserify:dev', 'sass:dev', 'autoprefixer:dist', 'copy']);
+	grunt.registerTask("dev", ["browserify:dev", "sass:dev", "autoprefixer:dist", "copy"]);
 
 	// A task for creating a deployment build.
-	grunt.registerTask('deploy', ['browserify:deploy', 'sass:deploy', 'autoprefixer:dist', 'csso:dist']);
+	grunt.registerTask("deploy", ["browserify:deploy", "sass:deploy", "autoprefixer:dist", "csso:dist"]);
 };

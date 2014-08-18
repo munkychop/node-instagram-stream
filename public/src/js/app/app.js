@@ -42,7 +42,7 @@ require("angular-moment/angular-moment");
 
 
 			// Setup directives.
-			TMWHuntApp.directive('backgroundImageUrl', require("directives/background-image-url"));
+			TMWHuntApp.directive("backgroundImageUrl", require("directives/background-image-url"));
 
 
 			// Setup controllers.

@@ -1,11 +1,3 @@
-
-/*!
- * Module dependencies.
- */
-
-var async = require("async");
-
-
 /**
  * Expose routes
  */
@@ -82,32 +74,6 @@ module.exports = function (app, instagram) {
 		}
 	});
 
-
-	// ----------------------------------------
-	// CATCH-ALL ROUTE (except '/api/*')
-	// ----------------------------------------
-	/*
-	// Render the index page for any deep link other than paths starting with '/api' or '/teams'.
-	app.get(/^((?!\/api|\/teams).)*$/, function (req, res) {
-
-		res.render("index");
-	});
-	*/
-
-	/*
-		:var sets the req.param that you don't use. it's only used in this case to set the regex.
-		(bla|blabla) sets the regex to match, so it matches the strings bla and blabla.
-		? makes the entire regex optional, so it matches / as well.
-	*/
-
-	/*
-	app.route("/:var(example|poop)?")
-	
-		.get(function(req, res) {
-			res.render("index");
-		});
-	*/
-
 	// assume "not found" in the error msgs
 	// is a 404. this is somewhat silly, but
 	// valid, you can do whatever you like, set
@@ -120,8 +86,7 @@ module.exports = function (app, instagram) {
 			return next();
 		}
 
-		// log it
-		// send emails if you want
+		// log the error
 		console.error(err.stack);
 
 		// error page
@@ -135,6 +100,4 @@ module.exports = function (app, instagram) {
 			error: "Not found"
 		});
 	});
-
-	//showError
 };

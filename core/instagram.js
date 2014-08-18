@@ -162,7 +162,7 @@ module.exports = function (app, server, config)
 	{
 		//console.log("instagram:: [addTagSubscription] tag name:", _tagData.name);
 
-		_instagram.add_tag_subscription(_tagData.name, config.instagram.appURL + '/api/instagram-data', function(err, result, limit)
+		_instagram.add_tag_subscription(_tagData.name, config.instagram.appURL + "/api/instagram-data", function(err, result, limit)
 		{				
 			if (err) console.log(err);
 		});
@@ -177,7 +177,7 @@ module.exports = function (app, server, config)
 	{
 		if (err)
 		{
-			console.log(err)
+			console.log(err);
 			return;
 		}
 
@@ -335,7 +335,7 @@ module.exports = function (app, server, config)
 
 	function emitMediaData (mediaVOArray)
 	{
-		_socketServer.sockets.emit('mediaData', mediaVOArray);
+		_socketServer.sockets.emit("mediaData", mediaVOArray);
 	}
 
 	function tick ()

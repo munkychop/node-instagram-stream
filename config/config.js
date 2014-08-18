@@ -4,7 +4,7 @@ var path = require("path"),
 	config,
 	sharedConfig;
 
-var sharedConfig = {
+sharedConfig = {
 	root: rootPath,
 	db : {
 		path: {}
@@ -23,7 +23,7 @@ config = {
 		app: {
 			name: "Instagram photo stream - local"
 		},
-		instagram: require("./privconfig-instagram")["local"],
+		instagram: require("./privconfig-instagram").local,
 		global:	sharedConfig
 	},
 
@@ -33,7 +33,7 @@ config = {
 		app: {
 			name: "Instagram photo stream - Dev"
 		},
-		instagram: require("./privconfig-instagram")["dev"],
+		instagram: require("./privconfig-instagram").dev,
 		global:	sharedConfig
 	},
 
@@ -43,7 +43,7 @@ config = {
 		app: {
 			name: "Instagram photo stream - Prod"
 		},
-		instagram: require("./privconfig-instagram")["prod"],
+		instagram: require("./privconfig-instagram").prod,
 		global:	sharedConfig
 	}
 };
