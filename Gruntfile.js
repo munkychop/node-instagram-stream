@@ -37,32 +37,36 @@ module.exports = function (grunt) {
 		return aliasArray;
 	}
 
-	// ====================
-	// ====================
 
 	// Project configuration.
 	grunt.initConfig({
 
 		pkg: require("./package"),
 
+		/**
+		 * Browserify
+		 * https://github.com/jmreidy/grunt-browserify
+		 * Browserify lets you require('modules') in the browser.
+		 */
 		browserify: {
 
 			dev: {
 
 				options : {
-					debug: true,
 					alias: browserifyAliasAppFilesArray,
-					transform: ["uglifyify"]
+					transform: ["uglifyify"],
+					browserifyOptions : {
+						debug: true
+					}
 				},
 
 				src: jsSrcFile,
 				dest: jsDistDir + jsFile,
 			},
 
-			deploy: {
+			dist: {
 
 				options : {
-					debug: false,
 					alias: browserifyAliasAppFilesArray,
 					transform: ["uglifyify"]
 				},
@@ -74,11 +78,9 @@ module.exports = function (grunt) {
 
 
 		/**
-		 * Sass compilation
+		 * Sass
 		 * https://github.com/gruntjs/grunt-contrib-sass
-		 * Separate options for dev and production environments
-		 * Includes kickoff.scss and kickoff-old-ie.scss by default
-		 * Also creates source maps
+		 * Compiles Sass into CSS.
 		 */
 		sass: {
 
@@ -96,7 +98,7 @@ module.exports = function (grunt) {
 				}
 			},
 
-			deploy: {
+			dist: {
 				options: {
 					style: "compressed",
 					precision : 8
@@ -112,13 +114,13 @@ module.exports = function (grunt) {
 		/**
 		 * Autoprefixer
 		 * https://github.com/ai/autoprefixer
-		 * Auto prefixes your CSS using caniuse data
+		 * Auto prefixes your CSS using caniuse data.
 		 */
 		autoprefixer: {
 			dist : {
 				options: {
 					// support the last 2 browsers, any browsers with >5% market share,
-					// and ensuring we support IE9 and Anroid 4 stock browsers with prefixes
+					// and ensure that we support IE9+ and Anroid 4 stock browsers with prefixes.
 					browsers: ["> 5%", "last 2 versions", "ie >= 9", "Android 4"],
 					map: true
 				},
@@ -132,7 +134,7 @@ module.exports = function (grunt) {
 		/**
 		 * CSSO
 		 * https://github.com/t32k/grunt-csso
-		 * Minify CSS files with CSSO
+		 * Minify CSS files with CSSO.
 		 */
 		csso: {
 			dist: {
@@ -147,6 +149,12 @@ module.exports = function (grunt) {
 			}
 		},
 
+
+		/**
+		 * Copy
+		 * https://github.com/gruntjs/grunt-contrib-copy
+		 * Copy files and folders.
+		 */
 		copy: {
 			
 			img: {
@@ -172,7 +180,7 @@ module.exports = function (grunt) {
 		/**
 		 * Watch
 		 * https://github.com/gruntjs/grunt-contrib-watch
-		 * Watches your scss, js etc for changes and compiles them
+		 * Watch the listed files and, if changed, run the specified tasks.
 		 */
 		watch: {
 			scss: {
@@ -229,5 +237,5 @@ module.exports = function (grunt) {
 	grunt.registerTask("dev", ["browserify:dev", "sass:dev", "autoprefixer:dist", "copy"]);
 
 	// A task for creating a deployment build.
-	grunt.registerTask("deploy", ["browserify:deploy", "sass:deploy", "autoprefixer:dist", "csso:dist"]);
+	grunt.registerTask("deploy", ["browserify:dist", "sass:dist", "autoprefixer:dist", "csso:dist"]);
 };
