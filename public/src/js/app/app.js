@@ -64,7 +64,10 @@ require("angular-moment/angular-moment");
 						.when("/slideshow", {templateUrl: "/partials/slideshow.html", controller: "SlideshowViewController"});
 
 					$locationProvider
-						.html5Mode(true)
+						.html5Mode({
+							enabled: true,
+							requireBase: false
+						})
 						.hashPrefix("!");
 
 					$sceDelegateProvider.resourceUrlWhitelist([
