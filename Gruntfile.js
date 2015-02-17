@@ -91,7 +91,8 @@ module.exports = function (grunt) {
 					lineNumbers: false,
 					debugInfo : false,
 					precision : 8,
-					sourcemap : true
+					sourceMap : true,
+					includePaths : ["public/src/scss"]
 				},
 				files: {
 					"public/dist/css/kickoff.css": "public/src/scss/kickoff.scss"
@@ -101,7 +102,9 @@ module.exports = function (grunt) {
 			dist: {
 				options: {
 					style: "compressed",
-					precision : 8
+					precision : 8,
+					sourceMap : false,
+					includePaths : ["public/src/scss"]
 				},
 				files: {
 					"public/dist/css/kickoff.css": "public/src/scss/kickoff.scss"
@@ -234,8 +237,11 @@ module.exports = function (grunt) {
 	// =============
 
 	// A task for creating a development build.
+	grunt.registerTask("start", ["browserify:dev", "sass:dev", "autoprefixer:dist", "copy", "watch"]);
+
+	// A task for creating a development build.
 	grunt.registerTask("dev", ["browserify:dev", "sass:dev", "autoprefixer:dist", "copy"]);
 
-	// A task for creating a deployment build.
-	grunt.registerTask("deploy", ["browserify:dist", "sass:dist", "autoprefixer:dist", "csso:dist"]);
+	// A task for creating a production build after a Heroku deployment.
+    grunt.registerTask("heroku:production", ["browserify:dist", "sass:dist", "autoprefixer:dist", "csso:dist"]);
 };
