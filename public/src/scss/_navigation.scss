@@ -102,6 +102,7 @@
 			& a {
 				color: $brown;
 				display: block;
+				outline: none;
 				@include clearfix;
 			}
 
