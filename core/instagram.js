@@ -144,7 +144,7 @@ module.exports = function (app, server, config)
 	{
 		// Return a shuffled copy of the global mediaVOArray if there is more than one item in the array,
 		// otherwise return an empty array, since we nee more than one item for the slideshow to work properly.
-		return _tagData.mediaVOArray.length > 1 ? _shuffle(_tagData.mediaVOArray, true) : [];
+		return _tagData.mediaVOArray.length > 1 ? _shuffle(_tagData.mediaVOArray.concat(), true) : [];
 	};
 
 	function deleteAllSubscriptions (cb)
