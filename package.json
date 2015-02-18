@@ -9,6 +9,7 @@
     "start": "node index.js",
     "install": "napa"
   },
+  "main": "index.js",
   "napa": {
     "angular": "angular/bower-angular",
     "angular-route": "angular/bower-angular-route",
@@ -44,6 +45,6 @@
   },
   "subdomain": "instagram-stream",
   "engines": {
-    "node": "0.8.x"
+    "node": "0.10.x"
   }
 }
