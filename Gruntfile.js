@@ -243,5 +243,5 @@ module.exports = function (grunt) {
 	grunt.registerTask("dev", ["browserify:dev", "sass:dev", "autoprefixer:dist", "copy"]);
 
 	// A task for creating a production build after a Heroku deployment.
-    grunt.registerTask("heroku:production", ["browserify:dist", "sass:dist", "autoprefixer:dist", "csso:dist"]);
+    grunt.registerTask("heroku:production", ["browserify:dist", "sass:dist", "autoprefixer:dist", "csso:dist", "copy"]);
 };
