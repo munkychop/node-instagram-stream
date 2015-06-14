@@ -1,5 +1,6 @@
 Node Instagram Stream
 =====================
+Demo: https://instagram-stream.herokuapp.com
 
 #### Technology stack:
 
