@@ -173,7 +173,7 @@ module.exports = function (app, server, config)
 		_instagram.tag_media_recent(_tagData.name, {min_tag_id: _tagData.minTagID}, mediaRecentHandler);
 	}
 
-	function mediaRecentHandler (err, dataArray, pagination, limit, previousUserDataDictionary, previousAllMediaDataArray, recursing)
+	function mediaRecentHandler (err, dataArray, pagination, remaining, limit, previousUserDataDictionary, previousAllMediaDataArray, recursing)
 	{
 		if (err)
 		{
@@ -327,7 +327,7 @@ module.exports = function (app, server, config)
 				if (typeof pagination.next === "function") pagination.next(function (err, dataArray, pagination, limit) {
 
 					// Recurse the 'mediaRecentHandler' function, passing in some custom params.
-					mediaRecentHandler(err, dataArray, pagination, limit, userDataDictionary, allMediaVOArray, true);
+					mediaRecentHandler(err, dataArray, pagination, remaining, limit, userDataDictionary, allMediaVOArray, true);
 				});
 			}
 		}
